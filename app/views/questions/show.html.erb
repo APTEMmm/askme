@@ -1,0 +1,19 @@
+<div class="container">
+  <h2 class="title-lg mb"> Вопрос <%= @question.id %></h2>
+
+  <%= content_tag :p, class: "mb-sm #{'transparent-title' if @question.hidden? }" do %>
+    <%= @question.body %><br/>
+    User ID: <%= @question.user_id %>
+  <% end %>
+
+  <div class="mt">
+    <%= link_to fa_icon('pencil'), edit_question_path(@question), title: 'Редактировать вопрос' %>
+    <%= link_to fa_icon('trash-o'), question_path(@question), method: :delete, title: 'Удалить вопрос',
+                data: { confirm: "Are you sure?" } %>
+    <% unless @question.hidden? %>
+      <%= link_to fa_icon('eye-slash'), "/questions/#{@question.id}/hide", method: :put, title: 'Спрятать вопрос' %>
+    <% end %>
+  </div>
+
+  <p class="mt"><%= link_to 'Все вопросы', questions_path %></p>
+</div>
