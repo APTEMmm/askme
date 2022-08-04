@@ -21,6 +21,7 @@ a, button {
 .text-sm {
   font-size: 80%;
 }
+
 .transparent-title {
-  color: rgba(50, 25, 18, 0.5)
+  opacity: .3;
 }
