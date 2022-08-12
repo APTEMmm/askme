@@ -38,10 +38,6 @@ class QuestionsController < ApplicationController
     redirect_to question_path(@question)
   end
 
-  def hidden?
-    @question.hidden
-  end
-
   private
 
   def question_params
