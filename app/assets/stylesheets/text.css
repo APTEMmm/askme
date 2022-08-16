@@ -23,5 +23,9 @@ a, button {
 }
 
 .transparent-title {
-  opacity: .3;
+  opacity: 50%;
+}
+
+.text-gray {
+  color: #a0a0a0;
 }
