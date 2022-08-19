@@ -31,3 +31,23 @@ body {
   color: white;
   text-decoration: none;
 }
+
+.navbar-blue {
+  background-color: #0000b4;
+}
+
+.navbar-green {
+  background-color: #568b00;
+}
+
+.navbar-violet {
+  background-color: #8c12ff;
+}
+
+.navbar-orange {
+  background-color: #d8763a;
+}
+
+.navbar-red {
+  background-color: #B22222;
+}

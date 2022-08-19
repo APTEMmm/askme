@@ -25,6 +25,10 @@
       <p class="mt"><%= form.label :password_confirmation %></p>
       <p><%= form.password_field :password_confirmation, class: 'form-text-field' %></p>
 
+      <p class="mt"><%= form.label :navbar_color, 'Цвет навигационной панели' %></p>
+      <p class="mt-sm"><%= form.select :navbar_color, %w[brown blue green violet orange red],
+                                       class: 'form-text-field' %></p>
+
       <p class="mt-lg">
         <%= form.submit 'Сохранить', class: 'button button-main' %>
         <span class="text-sm"> или <%= link_to 'вернуться', :back %> </span>

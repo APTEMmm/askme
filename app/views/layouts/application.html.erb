@@ -11,18 +11,20 @@
 
 <body>
 <div class="wrapper">
-  <div class="navbar">
+  <%= content_tag :div, class: "navbar navbar-#{current_user.navbar_color if current_user.present? }" do %>
     <p class="title-sm text-bold"><%= link_to 'Ask me!', root_path %></p>
     <div>
       <% if current_user.present? %>
-        <%= content_tag 'span', "@#{current_user.nickname}", class: 'mr-sm' %>
+        <%= content_tag 'span', display_nickname(current_user), class: 'mr-sm' %>
+        <%= link_to 'Редактировать профиль', edit_user_path(current_user), class: 'button' %>
         <%= link_to 'Выйти', session_path, method: :delete, class: 'button' %>
       <% else %>
         <%= link_to 'Регистрация', new_user_path, class: 'button button-yellow mr-sm' %>
         <%= link_to 'Вход', new_session_path, class: 'button button-yellow' %>
-      <% end  %>
+      <% end %>
     </div>
-  </div>
+  <% end %>
+
 
   <% if flash[:notice].present? %>
     <p class="mb mt message message-notice"><%= flash[:notice] %> </p>
