@@ -28,7 +28,8 @@ ActiveRecord::Schema.define(version: 2022_08_19_191408) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "password_digest"
-    t.string "navbar_color"
+    t.string "navbar_color", default: "#370617"
+    t.index ["nickname"], name: "index_users_on_nickname", unique: true
   end
 
 end
