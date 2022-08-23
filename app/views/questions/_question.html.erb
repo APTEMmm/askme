@@ -2,17 +2,25 @@
   <%= question.body -%>
 </div>
 
+<% if question.answer.present? %>
+  <div class="mb-sm text-dark-red">
+    <%= question.answer %>
+  </div>
+<% end %>
 <div class="text-sm question-footer">
   <div clasa="text-grey">
     <%= l(question.created_at, format: :short) %>
   </div>
 
-  <div>
-    <%= link_to fa_icon('pencil'), edit_question_path(question), title: 'Редактировать вопрос' %>
-    <%= link_to fa_icon('trash-o'), question_path(question), method: :delete, title: 'Удалить вопрос',
-                data: { confirm: "Are you sure?" } %>
-    <% unless question.hidden? %>
-      <%= link_to fa_icon('eye-slash'), hide_question_path(question), method: :put, title: 'Спрятать вопрос' %>
+  <% if current_user == question.user %>
+    <div>
+      <% edit_icon = (question.answer.present? ? 'pencil' : 'reply') %>
+      <%= link_to fa_icon(edit_icon), edit_question_path(question), title: 'Редактировать вопрос', class: 'mr-sm'%>
+      <%= link_to fa_icon('trash-o'), question_path(question), method: :delete, title: 'Удалить вопрос',
+                  data: { confirm: "Are you sure?" }, class: 'mr-sm' %>
+      <% unless question.hidden? %>
+        <%= link_to fa_icon('eye-slash'), hide_question_path(question), method: :put, title: 'Спрятать вопрос' %>
+      <% end %>
+    </div>
     <% end %>
-  </div>
 </div>

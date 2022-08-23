@@ -9,6 +9,8 @@ class User < ApplicationRecord
                     format: { with: /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i }
   validates :nickname, presence: true, uniqueness: true, format: { with: /\A\w+\z/ }, length: { maximum: 40 }
 
+  has_many :questions, dependent: :delete_all
+
   private
 
   def downcase_nickname

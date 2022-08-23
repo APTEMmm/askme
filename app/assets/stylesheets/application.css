@@ -11,5 +11,6 @@
  *= require form
  *= require message
  *
- *=require question
+ *= require question
+ *= require user
  */
