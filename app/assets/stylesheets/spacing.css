@@ -31,3 +31,15 @@
 .mr-lg {
   margin-right: 1.75em;
 }
+
+.ml-sm {
+  margin-left: 0.6em;
+}
+
+.ml, .mr-ml {
+  margin-left: 1em;
+}
+
+.ml-lg {
+  margin-left: 1.75em;
+}
