@@ -11,7 +11,7 @@ h1, h2, h3, h4, h5, h6 {
 button {
   background: none;
   border: none;
-  cursor: none;
+  cursor: pointer;
   font-size: 100%;
   text-decoration: underline;
 }
