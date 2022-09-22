@@ -31,10 +31,18 @@
       <p class="mt"><%= form.label :password_confirmation %></p>
       <p><%= form.password_field :password_confirmation, class: 'form-text-field' %></p>
 
-      <p class="mt"><%= form.label :navbar_color, 'Цвет навигационной панели' %></p>
-      <p class="mt-sm"><%= form.select :navbar_color, %w[brown blue green violet orange red],
-                                       class: 'form-text-field' %></p>
+        <p data-controller="color-picker">
+          <%= form.color_field :header_color,
+              value: current_user.navbar_color,
+              'data-color-picker-target': 'picker'
+          %>
+          <%= button_tag "Сбросить цвет шапки",
+                         type: 'button',
+                         'data-action': "click->color-picker#set",
+                         'data-color-picker-color-param': default_navbar_color
+          %>
 
+      </div>
       <p class="mt-lg">
         <%= form.submit 'Сохранить', class: 'button button-main' %>
         <span class="text-sm"> или <%= link_to 'вернуться', :back %> </span>
