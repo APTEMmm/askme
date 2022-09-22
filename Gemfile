@@ -29,6 +29,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'jquery-rails'
 gem 'gravtastic'
 gem 'stimulus-rails'
+gem 'recaptcha', require: 'recaptcha/rails'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
