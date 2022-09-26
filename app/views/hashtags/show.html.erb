@@ -1,0 +1,9 @@
+<% @questions.each do |question| %>
+  <div class="mt-sm container">
+    <p class="mb text-sm text-grey">
+    Вопрос <%= link_to "##{question.id}", question>path(question)
+    %>
+    для юзера <%= link_to "@#{question.user.nickname}", user_path (question.user) %>
+    </p>
+  </div>
+<% end %>

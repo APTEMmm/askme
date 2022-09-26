@@ -5,6 +5,7 @@ class QuestionsController < ApplicationController
   def index
     @questions = Question.order(created_at: :desc).last(10)
     @users = User.order(created_at: :desc).last(10)
+    @hashtags = Hashtag.with_questions
   end
 
   def show
