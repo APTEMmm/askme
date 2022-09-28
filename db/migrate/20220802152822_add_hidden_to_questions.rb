@@ -1,4 +1,4 @@
-class AddHiddenToQuestions < ActiveRecord::Migration[5.2]
+class AddHiddenToQuestions < ActiveRecord::Migration[6.1]
   def change
     add_column :questions, :hidden, :boolean, default: false
   end
