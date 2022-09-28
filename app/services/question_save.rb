@@ -23,14 +23,15 @@ class QuestionSave
 
   def create_hashtags
     question.transaction do
-    question.save!
+      question.attributes = params
+      question.save!
 
-    question.hashtags =
-    "#{question.body} #{question.answer}"
-      downcase.
-      scan(Hashtag::REGEXP)
-      uniq
-      map { |ht| Hashtag.find_or_create_by(text: ht.delete('#')) }
+      question.hashtags =
+        "#{question.body} #{question.answer}".
+          downcase.
+          scan(Hashtag::REGEXP).
+          uniq.
+          map { |ht| Hashtag.find_or_create_by(text: ht.delete('#')) }
 
       true
     end

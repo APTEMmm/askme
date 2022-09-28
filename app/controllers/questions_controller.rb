@@ -3,7 +3,7 @@ class QuestionsController < ApplicationController
   before_action :set_question_for_current_user, only: %i[update destroy edit hide]
 
   def index
-    @questions = Question.order(created_at: :desc).last(10)
+    @questions = Question.includes(:user).order(created_at: :desc).last(10)
     @users = User.order(created_at: :desc).last(10)
     @hashtags = Hashtag.with_questions
   end
@@ -18,7 +18,7 @@ class QuestionsController < ApplicationController
     @question = Question.new(question_params)
     @question.author = current_user
 
-    if @question.save
+    if QuestionSave.(question: @question, params: question_params)
       redirect_to user_path(@question.user), notice: 'Новый вопрос создан!'
     else
       flash.now[:alert] = 'Неправильно заполнены поля вопроса'
@@ -30,7 +30,7 @@ class QuestionsController < ApplicationController
   def update
     question_params = params.require(:question).permit(:body, :answer, :hidden)
 
-    if @question.update(question_params)
+    if QuestionSave.(question: @question, params: question_params)
       redirect_to user_path(@question.user), notice: 'Вопрос сохранен!'
     else
       flash.now[:alert] = 'При попытке сохранить вопрос возникли ошибки'

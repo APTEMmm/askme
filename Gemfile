@@ -25,7 +25,7 @@ gem 'turbolinks', '~> 5'
 
 gem 'bootsnap', '>= 1.4.4', require: false
 
-gem "where_exists", "~> 2.0"
+gem 'where_exists', '~> 2.0'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -48,5 +48,3 @@ end
 group :production do
   gem 'pg'
 end
-
-gem "bullet", "~> 7.0"
