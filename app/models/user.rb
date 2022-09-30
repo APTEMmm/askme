@@ -21,10 +21,6 @@ class User < ApplicationRecord
 
   private
 
-  def reset_color!
-    self.navbar_color = navbar_color.default
-  end
-
   def downcase_nickname
     nickname&.downcase!
   end

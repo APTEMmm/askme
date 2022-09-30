@@ -3,7 +3,7 @@ class QuestionsController < ApplicationController
   before_action :set_question_for_current_user, only: %i[update destroy edit hide]
 
   def index
-    @questions = Question.includes(:user).includes(:author).order(created_at: :desc).first(10)
+    @questions = Question.includes(:user, :author).order(created_at: :desc).first(10)
     @users = User.order(created_at: :desc).last(10)
     @hashtags = Hashtag.with_questions
   end
