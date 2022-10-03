@@ -16,7 +16,7 @@
   <% end %>
 
   <div class="mt">
-    <%= form_with model: @user, data: { turbo: false } do |form| %>
+    <%= form_with model: @user, local: true do |form| %>
       <p><%= form.label :name, 'Ваше имя' %></p>
       <p><%= form.text_field :name, class: 'form-text-field' %></p>
 
@@ -31,16 +31,8 @@
       <p class="mt"><%= form.label :password_confirmation %></p>
       <p><%= form.password_field :password_confirmation, class: 'form-text-field' %></p>
 
-        <p data-controller="color-picker">
-          <%= form.color_field :header_color,
-              value: current_user.navbar_color,
-              'data-color-picker-target': 'picker'
-          %>
-          <%= button_tag "Сбросить цвет шапки",
-                         type: 'button',
-                         'data-action': "click->color-picker#set",
-                         'data-color-picker-color-param': default_navbar_color
-          %>
+      <p> <%= form.color_field :navbar_color, data: { default_navbar_color: form.object.class::DEFAULT_NAVBAR_COLOR } %></p>
+      <p><%= link_to "Сбросить цвет шапки", '#', id: 'reset_navbar_color' %></p>
 
       </div>
       <p class="mt-lg">
@@ -48,12 +40,11 @@
         <span class="text-sm"> или <%= link_to 'вернуться', :back %> </span>
       </p>
     <% end %>
-  </div>
+    </div>
 
-  <div class="mt-lg">
-    <%= button_to "Удалить профиль", user_path(@user),
-                  method: :delete,
-                  form: { data: { confirm: "Вы точно хотите удалить свой профиль?" } },
-                  class: 'text-red text-sm' %>
-  </div>
+<div class="mt-lg">
+  <%= button_to "Удалить профиль", user_path(@user),
+                method: :delete,
+                form: { data: { confirm: "Вы точно хотите удалить свой профиль?" } },
+                class: 'text-red text-sm' %>
 </div>

@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   include Gravtastic
 
+  DEFAULT_NAVBAR_COLOR = '#370617'
+
   has_many :questions, dependent: :delete_all
   has_many :asked_questions, class_name: 'Question', foreign_key: :author_id, dependent: :nullify
 
